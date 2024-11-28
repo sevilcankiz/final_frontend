@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { TiShoppingCart } from "react-icons/ti";
 import '../styles/HomePage.css';
 
 const Nav = ({ isLoggedIn, user, onLogout }) => {
@@ -16,6 +16,11 @@ const Nav = ({ isLoggedIn, user, onLogout }) => {
           ) : (
             <>
               <li><a href="/products">Produkte</a></li>
+              <li>
+                <a href="/cart" title="Warenkorb">
+                  <TiShoppingCart size={24}/>
+                </a>
+              </li>
               <li>
                 <span>Willkommen, {user?.first_name}!</span>
               </li>

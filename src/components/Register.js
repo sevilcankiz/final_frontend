@@ -20,6 +20,12 @@ const Register = () => {
         e.preventDefault();
         setMessage('');
         setError('');
+
+        if (!formData.email.includes('@yourjournal')) {
+            setError('Bitte verwenden Sie eine gültige firmeneigene E-Mail-Adresse (@yourjournal).');
+            return;
+        }
+
         try {
             const response = await fetch('http://172.20.79.15/sentuerk_final/final_backend/api.php/register', {
                 method: 'POST',
@@ -44,6 +50,7 @@ const Register = () => {
     return (
         <div>
             <h1>Registrierung</h1>
+            <p>Bitte mit der firmeneigenen E-Mail-Adresse (@yourjournal) Registrieren</p>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Benutzername:</label>
