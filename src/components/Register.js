@@ -9,6 +9,12 @@ const Register = () => {
     });
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+
+    const isPasswordValid = (password) => {
+        const passwordCheck = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@$%?])[A-Za-z\d!@$%?]{8,}$/;
+        return passwordCheck.test(password);
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -23,6 +29,12 @@ const Register = () => {
 
         if (!formData.email.includes('@yourjournal')) {
             setError('Bitte verwenden Sie eine gültige firmeneigene E-Mail-Adresse (@yourjournal).');
+            return;
+        }
+        if (!isPasswordValid(formData.password)) {
+            setError(
+                'Das Passwort muss mindestens 8 Zeichen lang sein, einen Großbuchstaben, eine Zahl und ein Sonderzeichen (!@$%?) enthalten.'
+            );
             return;
         }
 
