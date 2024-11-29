@@ -19,6 +19,7 @@ const Nav = ({ isLoggedIn, user, onLogout }) => {
               <li>
                 <a href="/cart" title="Warenkorb">
                   <TiShoppingCart size={24}/>
+                  <span>Warenkorb</span>
                 </a>
               </li>
               <li>

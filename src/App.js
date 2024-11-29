@@ -7,6 +7,8 @@ import Home from './components/Home';
 import Products from './components/Products';
 import Login from './components/Login';
 import Nav from './components/Nav';
+import Cart from './components/Cart';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +25,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUser(null);
-    localStorage.removeItem('user'); // Login-Daten aus localStorage löschen
+    localStorage.removeItem('user');
   };
 
   return (
@@ -34,8 +36,9 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} /> 
               <Route path="/register" element={<Register/>}/>
-              <Route path="/products" element={<Products/>}/>
+              <Route path="/products" element={<Products userId={user?.id} />}/>
               <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>} />
+              <Route path="/cart" element={<Cart userId={user?.id} />} />
           </Routes>
           </div>
         </div>
