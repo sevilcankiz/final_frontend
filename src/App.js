@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import Register from './components/Register';
 import Home from './components/Home'; 
@@ -13,6 +13,7 @@ import Cart from './components/Cart';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -26,6 +27,7 @@ function App() {
     setIsLoggedIn(false);
     setUser(null);
     localStorage.removeItem('user');
+    navigate('/');
   };
 
   return (
